@@ -1,7 +1,7 @@
 <?php
     require_once 'conexion/conexion.php';
     $conn = Database::connect();
-
+    
     $sql = "SELECT * FROM documentos";
     $res = mysqli_query($conn, $sql);
 ?>
@@ -32,6 +32,7 @@
                         <input type="file" name="imagen" id=""><br>
                         <label for=""> Seleccione documento:</label>
                         <input type="file" name="documento" id=""><br>
+                        <!-- boton de enviar -->
                         <input type="submit" value="Enviar" name="Enviar" class="btn btn-primary">
                     </form>
                 </div>
@@ -46,6 +47,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <!-- titulos de la tabla -->
                             <th scope="col">ID</th>
                             <th scope="col">Nombre Imagen</th>
                             <th scope="col">Documento</th>
@@ -60,8 +62,14 @@
                             ?>
                         <tr>
                             <th><?php echo $id; ?></th>
-                            <td><a href="<?php echo 'img/'.$nomimg; ?>"><i class="icon-picture"></i></a></td>
-                            <td><a href="<?php echo 'documentos/'.$doc; ?>"><i class="icon-doc-text"></i></a></td>
+                            <td>
+                                <a href="<?php echo 'img/'.$nomimg; ?>"><i class="icon-picture"></i></a>
+                                <a href="logica/delete.php?idimg=<?php echo $id; ?>"><i class="icon-trash-empty"></i></a>
+                            </td>
+                            <td>
+                                <a href="<?php echo 'documentos/'.$doc; ?>"><i class="icon-doc-text"></i></a>
+                                <a href="logica/delete.php?iddoc=<?php echo $id; ?>"><i class="icon-trash-empty"></i></a>
+                            </td>
                             <td>
                                 <a href="logica/delete.php?id=<?php echo $id; ?>"><i class="icon-trash-empty"></i></a>
                             </td>
@@ -79,7 +87,6 @@
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
     </script>
 </body>
